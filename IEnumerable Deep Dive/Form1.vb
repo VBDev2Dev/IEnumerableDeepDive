@@ -21,7 +21,13 @@
     Private Sub btn20Random_Click(sender As Object, e As EventArgs) Handles btn20Random.Click
         Dim numbers As IEnumerable(Of Integer) = EndlessRandom(901).Take(20) ' lazy.  Not even processed yet
 
-        numbers = OnlyEven(numbers).ToArray 'step into this line.  See how it works.
+        Debug.WriteLine($"Numbers is a {numbers.GetType().FullName}")
+        numbers = OnlyEven(numbers) 'still lazy.  
+        Debug.WriteLine($"Numbers is a {numbers.GetType().FullName}")
+
+        numbers = numbers.ToArray 'step into this line.  See how it works.
+
+        Debug.WriteLine($"Numbers is a {numbers.GetType().FullName}")
 
         lstResults.Items.Clear()
         lstResults.DataSource = numbers
